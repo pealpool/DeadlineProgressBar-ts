@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <link href="css/css.css" rel="stylesheet">
+</head>
+<body id="ProgressBar_body">
+
+<div id="ProBar"></div>
+
+<!--<button id="myBtTest">-->
+<!--    渲染进程给主进程发送消息-->
+<!--</button>-->
+</body>
+
+<!--<script> if (typeof module === 'object') {
+    window.module = module;
+    module = undefined;
+}</script>-->
+<!--这句是解决代码Electron与JQuery冲突,期间的为自己的js和jQuery,记住,要将自己的js和引入的jQuery放在这里两句代码中间.（第一句）-->
+
+<!--<script src="src/js/jquery-3.6.0.min.js"></script>-->
+<script>window.$ = window.jQuery = require('jquery');</script>
+<script src="../assets/jquery-ui-scale.1.13.1.min.js"></script>
+<script src="js/progressBar.js" type="module"></script>
+
+
+<!--<script> if (window.module) module = window.module;</script>-->
+
+</html>

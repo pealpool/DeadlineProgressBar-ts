@@ -1,0 +1,441 @@
+$Bg: #2b2b2b;
+$DaBg: #1e1e1e;
+$frontD: #3c3f41;
+$frontL: #45484a;
+$L1: linear-gradient(180deg, #2b2b2b 0%, #3d3d3d 27.08%, #2b2b2b 100%);
+$L2: linear-gradient(180deg, #232323 0%, #373737 27.08%, #232323 100%);
+$fontL: #bbbbbb;
+$fontD: #838383;
+$GreenL: #2fff00;
+$GreenD: #27d600;
+$bigBox-W: 329px;
+$bigBox-H: 244px;
+$bigBoxT-H: 200px;
+$pw: 16px;
+$pht: 10px;
+$phb: 20px;
+$frSizeDig: 24px;
+$frSizeTitle: 18px;
+$frSizeMid: 13px;
+$frSizeSmall: 10px;
+$frSizeMin: 9px;
+$fgChrH: 39px;
+@mixin tra {
+  transition: all 0.3s ease-in-out, transform 0s ease-in-out;
+}
+
+@mixin myHoverD {
+  filter: brightness(0.7);
+}
+
+@mixin myButton {
+  float: left;
+  height: 30px;
+  text-align: center;
+  font-size: $frSizeTitle;
+  line-height: $frSizeTitle + 10px;
+  @include tra;
+}
+
+@font-face {
+  font-family: "DigitalNumbers-Regular";
+  src: url("../../img/DigitalNumbers-Regular.ttf");
+}
+
+@font-face {
+  font-family: "SourceHanSansCN-Regular";
+  src: url("../../img/SourceHanSansCN-Regular.otf");
+}
+
+/*其中fontName替换为你的字体名称*/
+
+#ProgressBar_body {
+  padding: 0;
+  margin: 0;
+  width: auto;
+  height: 2px;
+  overflow: hidden;
+}
+
+#ProBar {
+  /*margin-top: 2px;*/
+  width: 100%;
+  height: 2px;
+  background-color: $GreenL;
+  /*border-top: black solid 1px;*/
+  /*border-bottom: black solid 1px;*/
+}
+
+/*---------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------*/
+
+#index_body {
+  padding: $pw $pht $pw $phb;
+  margin: 0;
+  width: $bigBox-W;
+  height: $bigBox-H;
+  font-family: "SourceHanSansCN-Regular";
+  overflow: hidden;
+  -webkit-user-select: none;
+  //-webkit-app-region: drag;
+}
+
+#index_div {
+  position: relative;
+  box-sizing: border-box;
+  padding: 6px;
+  margin: 0;
+  width: $bigBox-W;
+  height: $bigBox-H;
+  border-radius: 10px;
+  background-color: $Bg;
+  overflow: hidden;
+  box-shadow: 0 1.4px 4.6px -13px rgba(0, 0, 0, 0.364),
+  0px 3.1px 12.3px -13px rgba(0, 0, 0, 0.536), 0px 6px 25px -13px rgba(0, 0, 0, 0.9);
+}
+
+.bigBoxT {
+  width: $bigBox-W - 2 * 6px;
+  height: $bigBoxT-H;
+}
+
+.bigBoxB {
+  margin-top: 2px;
+  height: $bigBox-H - 2 * 6px - $bigBoxT-H - 2px;
+}
+
+.myTab {
+  float: left;
+  height: 200px;
+  background-color: $Bg;
+  border: 1px solid $DaBg;
+  box-sizing: border-box;
+  @include tra;
+  //-webkit-app-region: no-drag;
+
+  &:hover {
+    border: 1px solid $frontL;
+  }
+
+  &.act {
+    border: 1px solid $frontD;
+    background-color: $frontD;
+
+    & .tabTitle,
+    & .figureChr,
+    & .colon,
+    & .timeListTabShort,
+    & .timeListTabShort {
+      color: $fontL;
+    }
+
+    & .timeListTabShort,
+    & .timeListTabLong {
+      background-color: $Bg;
+    }
+
+    & .timeListAdd {
+      background-color: $frontD;
+    }
+
+    & .fgBox {
+      background: $L2;
+    }
+  }
+}
+
+#tab_l {
+  width: 126px;
+  border-radius: 5px 0 0 0;
+}
+
+#tab_r {
+  width: 189px;
+  margin-left: 2px;
+  border-radius: 0 5px 0 0;
+}
+
+.myOption {
+  height: 42px;
+}
+
+.optionBox {
+  position: relative;
+  margin-top: 11px;
+  margin-left: 8px;
+}
+
+.optionCircle {
+  float: left;
+  width: 25px;
+  height: 25px;
+  background-color: $Bg;
+  border: 1px solid $frontD;
+  box-sizing: border-box;
+  box-shadow: inset 0 0 10px $frontD;
+  border-radius: 50%;
+}
+
+.tabTitle {
+  float: left;
+  margin-left: 7px;
+  font-size: $frSizeTitle;
+  line-height: $frSizeTitle + 8px;
+  color: $fontD;
+  @include tra;
+}
+
+.opSelected {
+  position: absolute;
+  left: 3px;
+}
+
+.myV {
+  position: relative;
+  width: 24px;
+  height: 20px;
+  fill: $GreenL;
+}
+
+.figureBigBox {
+  position: relative;
+  margin-left: 6px;
+  width: auto;
+  height: 64px;
+}
+
+.fgBox {
+  float: left;
+  width: 23px;
+  height: $fgChrH;
+  background: $L1;
+  border-radius: 3px;
+  margin-right: 2px;
+  @include tra;
+}
+
+.colon {
+  float: left;
+  width: 14px;
+  height: $fgChrH;
+  color: $fontD;
+  font-size: $frSizeDig;
+  font-family: "DigitalNumbers-Regular";
+  @include tra;
+
+  span {
+    margin-left: -4px;
+    line-height: 45px;
+  }
+}
+
+.fb_HourMinSec {
+  float: left;
+  height: 11px;
+  font-size: $frSizeMin;
+  color: $DaBg;
+
+  span {
+    float: left;
+
+    &:nth-child(1) {
+      margin-left: 12px;
+    }
+
+    &:nth-child(2) {
+      margin-left: 39px;
+    }
+
+    &:nth-child(3) {
+      margin-left: 31px;
+    }
+  }
+}
+
+.figureChrBox {
+  position: absolute;
+  margin-left: 2px;
+}
+
+.figureCut {
+  float: left;
+  width: 46px;
+  height: $fgChrH;
+  overflow: hidden;
+}
+
+.figureChrRow {
+  position: relative;
+  width: 46px;
+  transform: translateY(-1560px);
+  //transition: transform 300ms ease-in-out 0s;
+  //transition: transform 1000ms cubic-bezier(0.19, 1, 0.22, 1) 0s;
+}
+
+.row_m,
+.row_s {
+  margin-left: 18px;
+}
+
+.figureChr {
+  width: 46px;
+  height: $fgChrH;
+  font-family: "DigitalNumbers-Regular";
+  font-size: $frSizeDig;
+  line-height: $fgChrH;
+  color: $fontD;
+  letter-spacing: 5.5px;
+  @include tra;
+  transition: all 0s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.timeListBigBox {
+  position: relative;
+  width: auto;
+  height: 68px;
+  margin-left: 6px;
+}
+
+.timeListAdd {
+  text-align: center;
+  font-size: $frSizeMid;
+  color: $fontD;
+  float: left;
+  width: 54px;
+  height: 20px;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  background: $Bg;
+  border: 1px solid $DaBg;
+  box-sizing: border-box;
+  border-radius: 3px;
+  @include tra;
+
+  &:hover {
+    @include myHoverD;
+  }
+}
+
+.timeListBoxFt {
+  position: absolute;
+}
+
+.timeListTabLong {
+  color: $fontD;
+  float: left;
+  width: 54px;
+  height: 20px;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  background-color: $DaBg;
+  box-sizing: border-box;
+  border-radius: 3px;
+  overflow: hidden;
+  padding-left: 2px;
+  @include tra;
+
+  span {
+    float: left;
+
+    &:nth-child(odd) {
+      width: 16px;
+      font-size: $frSizeMid;
+      margin-top: 2px;
+      margin-left: 1px;
+    }
+
+    &:nth-child(even) {
+      font-size: $frSizeMin;
+      margin-top: 6px;
+      margin-left: 1px;
+    }
+  }
+
+  &:hover {
+    @include myHoverD;
+  }
+
+  &:active {
+    transform: translateY(2px);
+  }
+}
+
+.timeListTabShort {
+  color: $fontD;
+  float: left;
+  width: 41px;
+  height: 20px;
+  margin-right: 4px;
+  margin-bottom: 4px;
+  background-color: $DaBg;
+  box-sizing: border-box;
+  border-radius: 3px;
+  overflow: hidden;
+  padding-right: 3px;
+  @include tra;
+
+  span {
+    float: right;
+
+    &:nth-child(even) {
+      width: 16px;
+      font-size: $frSizeMid;
+      margin-top: 2px;
+      margin-left: 1px;
+      text-align: right;
+    }
+
+    &:nth-child(odd) {
+      font-size: $frSizeMin;
+      margin-top: 6px;
+      margin-left: 1px;
+      text-align: left;
+      width: 8px;
+    }
+  }
+
+  &:hover {
+    @include myHoverD;
+  }
+
+  &:active {
+    transform: translateY(2px);
+  }
+}
+
+.grayButton {
+  width: 126px;
+  background-color: $frontD;
+  border-radius: 0 0 0 5px;
+  color: $fontD;
+  @include myButton;
+
+  &:hover {
+    background-color: $frontL;
+  }
+
+  &:active {
+    background-color: $frontD;
+  }
+}
+
+.greenButton {
+  width: 189px;
+  background-color: $GreenD;
+  border-radius: 0 0 5px 0;
+  color: $Bg;
+  @include myButton;
+
+  &:hover {
+    background-color: $GreenL;
+  }
+
+  &:active {
+    background-color: $GreenD;
+  }
+}
+
+#startNew {
+  margin-left: 2px;
+}
