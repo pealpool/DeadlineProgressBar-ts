@@ -5,6 +5,7 @@
 // window.$ = window.jQuery = require('jquery');
 // const { BrowserWindow, screen } = require("@electron/remote");
 import { ipcRenderer } from "electron";
+import * as path from "path";
 // import $ = require("jquery");
 // window.$ = window.jQuery = require('jquery');
 // import "./dragWindow"; //拖动窗体
@@ -13,7 +14,7 @@ import { ipcRenderer } from "electron";
 // import "./digitChange"; //数字变化
 // import "./timeListButton"; //预设按钮
 
-
+console.log(path.join(__dirname, "assets/img/ico16.ico"));
 
 
 $("#tab_l").on("click",function () {

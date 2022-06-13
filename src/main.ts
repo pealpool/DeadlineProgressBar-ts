@@ -24,6 +24,8 @@ app.on("window-all-closed", () => {
     }
 });
 
+// let abcde = path.join(__dirname, "../assets/img/ico16.ico");
+// console.log(abcde);
 /*app.on('activate', () => {
     if (setBoxWin === null) {
         create_setBoxWin();
@@ -77,7 +79,7 @@ function create_setBoxWin() {
         // backgroundColor:'#00000000', //使字体渲染清晰
         transparent: true,
         alwaysOnTop: true,
-        // icon: path.join(__dirname, "assets/img/ico16.ico"),
+        icon: path.join(__dirname, "/assets/img/ico16.ico"), //todo 没图
         webPreferences: {
             contextIsolation: false, // 设置此项为false后，才可在渲染进程中使用electron api
             nodeIntegration: true,

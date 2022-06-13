@@ -1,6 +1,6 @@
 // const { ipcRenderer } = require("electron");
 import {ipcRenderer} from "electron";
-import $ = require("jquery");
+// import $ = require("jquery");
 // window.$ = window.jQuery = require('jquery')
 
 let myDate;
