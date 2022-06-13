@@ -1,4 +1,5 @@
 import { ipcRenderer } from "electron";
+import $ = require("jquery");
 
 $("#startNew").click(function () {
   let time_h = 0,

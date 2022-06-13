@@ -1,3 +1,4 @@
+import $ = require("jquery");
 //拖动窗体
 let wX = 0;
 let wY = 0;

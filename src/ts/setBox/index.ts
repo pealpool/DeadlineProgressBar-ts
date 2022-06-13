@@ -5,13 +5,15 @@
 // window.$ = window.jQuery = require('jquery');
 // const { BrowserWindow, screen } = require("@electron/remote");
 import { ipcRenderer } from "electron";
-import "./dragWindow.ts"; //拖动窗体
-import "./startButton.ts"; //开始按钮
-import "./hideButton.ts"; //隐藏按钮
-import "./digitChange.ts"; //数字变化
-import "./timeListButton.ts"; //预设按钮
+import $ = require("jquery");
+// window.$ = window.jQuery = require('jquery');
+import "./dragWindow"; //拖动窗体
+import "./startButton"; //开始按钮
+import "./hideButton"; //隐藏按钮
+import "./digitChange"; //数字变化
+import "./timeListButton"; //预设按钮
 
-$("#tab_l").click(function () {
+$("#tab_l").on("click",function () {
   $(this).addClass("act");
   // $(this).find('.opSelected').eq(0).css('display', 'inline');
   $("#tab_l .myV").show("scale", { percent: 10 }, 200);
@@ -20,7 +22,7 @@ $("#tab_l").click(function () {
   $("#tab_r .myV").hide("scale", { percent: 10 }, 200);
 });
 
-$("#tab_r").click(function () {
+$("#tab_r").on("click",function () {
   $(this).addClass("act");
   // $(this).find('.opSelected').eq(0).css('display', 'inline');
   $("#tab_r .myV").show("scale", { percent: 10 }, 200);

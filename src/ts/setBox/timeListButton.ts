@@ -1,3 +1,4 @@
+import $ = require("jquery");
 $(".timeListTabShort").click(function () {
   //获取按钮时间
   let h = 0,
