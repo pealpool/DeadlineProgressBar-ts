@@ -2,6 +2,7 @@
 //remote执行主进程与渲染进程之间的IPC
 // const BrowserWindow = require("electron").remote.BrowserWindow;
 import {BrowserWindow} from 'electron';
+import * as path from "path";
 
 const btn = document.querySelector("#startNew") as HTMLElement;
 let pBarWin: any;
@@ -17,7 +18,7 @@ window.onload = function () {
         //打开一个新的窗口
         // newWin.loadURL(`file://${__dirname}/otherWin.html`);
         //新建窗口
-        pBarWin.loadURL(__dirname, "../../progressBar.html");
+        pBarWin.loadURL(path.join(__dirname, "../../progressBar.html"));
         pBarWin.on("close", () => {
             pBarWin = null;
         });
