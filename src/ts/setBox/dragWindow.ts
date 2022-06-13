@@ -1,5 +1,3 @@
-"use strict";
-
 //拖动窗体
 let wX = 0;
 let wY = 0;
@@ -14,8 +12,8 @@ $("#index_body").mousedown(function (e) {
     e.stopPropagation();
     e.preventDefault();
     if (dragging) {
-      let xLoc = e.screenX - wX;
-      let yLoc = e.screenY - wY;
+      const xLoc = e.screenX - wX;
+      const yLoc = e.screenY - wY;
       // console.log(xLoc, yLoc);
       try {
         window.moveTo(xLoc, yLoc);

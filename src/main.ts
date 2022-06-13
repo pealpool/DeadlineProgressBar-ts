@@ -1,6 +1,7 @@
-import {app, BrowserWindow,  Menu, Tray, ipcMain} from "electron";
+import electron = require("electron");
+import {app, BrowserWindow, Menu, Tray, ipcMain} from "electron";
 import * as path from "path";
-import { initialize, enable } from "@electron/remote/main"
+import {initialize, enable} from "@electron/remote/main"
 
 
 let setBoxWin: any, pgBarWin: any;
@@ -11,8 +12,8 @@ let winW: number, winH: number;
 app.commandLine.appendSwitch("wm-window-animations-disabled");
 
 app.on("ready", function () {
-    winW = Electron.screen.getPrimaryDisplay().workAreaSize.width;
-    winH = Electron.screen.getPrimaryDisplay().workAreaSize.height;
+    winW = electron.screen.getPrimaryDisplay().workAreaSize.width;
+    winH = electron.screen.getPrimaryDisplay().workAreaSize.height;
     create_setBoxWin();
     create_bgBarWin();
     // pgBarWin.hide();
@@ -76,7 +77,7 @@ function create_setBoxWin() {
         // backgroundColor:'#00000000', //使字体渲染清晰
         transparent: true,
         alwaysOnTop: true,
-        icon: path.join(__dirname, "img/ico16.ico"),
+        icon: path.join(__dirname, "./assets/img/ico16.ico"),
         webPreferences: {
             contextIsolation: false, // 设置此项为false后，才可在渲染进程中使用electron api
             nodeIntegration: true,
@@ -86,7 +87,7 @@ function create_setBoxWin() {
     initialize();
     enable(setBoxWin.webContents);
 
-    setBoxWin.loadURL(`file://${__dirname}/index.html`);
+    setBoxWin.loadURL(__dirname, '../index.html');
     // win.setIgnoreMouseEvents(true);
     setBoxWin.setMenu(null);
     // 窗口关闭的监听
@@ -106,7 +107,7 @@ function create_setBoxWin() {
     setBoxWin.webContents.openDevTools({mode: "detach"});
 
     //创建系统通知区菜单
-    tray = new Tray(path.join(__dirname, "img/ico16.ico"));
+    tray = new Tray(path.join(__dirname, "../assets/img/ico16.ico"));
     const contextMenu = Menu.buildFromTemplate([
         {
             label: "倒数设置",
@@ -168,7 +169,7 @@ function create_bgBarWin() {
     //打开一个新的窗口
     // newWin.loadURL(`file://${__dirname}/otherWin.html`);
     //新建窗口
-    pgBarWin.loadURL(`file://${__dirname}/src/progressBar.html`);
+    pgBarWin.loadURL(__dirname,"../progressBar.html");
     pgBarWin.on("close", () => {
         pgBarWin = null;
     });

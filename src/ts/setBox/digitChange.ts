@@ -1,10 +1,10 @@
-"use strict";
+import $ = require("jquery");
 
 //拖动时间
-let fgChrH = 39;
+const fgChrH = 39;
 let tY = 0;
 let timeDragging = false;
-let myEle;
+let myEle:any;
 let mh = 0; //#figureChrRow的margin-top
 let len = 0;
 let divNum = 0;
@@ -13,14 +13,14 @@ let mgt = "";
 $(".figureCut").mousedown(function (e) {
   myEle = null;
   myEle = "#" + $(this).find(".figureChrRow").eq(0).attr("id");
-  let hOrM = myEle.charAt(myEle.length - 1);
+  const hOrM = myEle.charAt(myEle.length - 1);
   // console.log(myEle);
   e.stopPropagation();
   e.preventDefault();
   timeDragging = true;
   // tX = e.pageX;
   tY = e.screenY;
-  let elY = Number(
+  const elY = Number(
     $(myEle)
       .css("transform")
       .replace(/[^0-9\-,]/g, "")
@@ -64,7 +64,7 @@ $(".figureCut").mousedown(function (e) {
       console.log(err);
     }
 
-    let yLoc = myRound(clY / fgChrH, 0) * fgChrH;
+    const yLoc = myRound(clY / fgChrH, 0) * fgChrH;
     $(window).unbind("mouseup");
     $(window).unbind("mousemove");
     divNum = 0;
@@ -74,14 +74,14 @@ $(".figureCut").mousedown(function (e) {
 });
 
 // 滚动增删div
-function scrollDiv(that, hOrM) {
-  let topNum = "";
+function scrollDiv(that:any, hOrM:string) {
+  let topNum = 0;
   // console.log('while front');
   while (divNum !== divTarget) {
     // console.log('divNum = ' + divNum + ', divTarget = ' + divTarget);
     if (divTarget - divNum > 0) {
       $(that).children(":last").remove();
-      topNum = $(that).children(":first").text();
+      topNum =  parseInt($(that).children(":first").text());
       topNum--;
       if (hOrM === "h") {
         if (topNum < 0) {
@@ -92,13 +92,13 @@ function scrollDiv(that, hOrM) {
           topNum = 59;
         }
       }
-      topNum = addZero(topNum);
-      $(that).prepend('<div class="figureChr">' + topNum + "</div>");
+      // topNum = addZero(topNum);
+      $(that).prepend('<div class="figureChr">' + addZero(topNum) + "</div>");
       // console.log('add Top ' + topNum);
       divNum++;
     } else {
       $(that).children(":first").remove();
-      topNum = $(that).children(":last").text();
+      topNum =  parseInt($(that).children(":last").text());
       topNum++;
       if (hOrM === "h") {
         if (topNum > 23) {
@@ -109,8 +109,8 @@ function scrollDiv(that, hOrM) {
           topNum = 0;
         }
       }
-      topNum = addZero(topNum);
-      $(that).append('<div class="figureChr">' + topNum + "</div>");
+      // topNum = addZero(topNum);
+      $(that).append('<div class="figureChr">' + addZero(topNum) + "</div>");
       // console.log('add Bottom ' + topNum);
       divNum--;
     }
@@ -122,7 +122,7 @@ function scrollDiv(that, hOrM) {
   }
 }
 
-function addZero(a) {
+function addZero(a:number) {
   if (a < 10) {
     return "0" + a;
   } else {
@@ -131,15 +131,15 @@ function addZero(a) {
 }
 
 //让-19.5能四舍五入成-20
-function myRound(number, precision) {
-  let _sign = number < 0 ? -1 : 1;
-  let _pow = Math.pow(10, precision);
+function myRound(number:number, precision:number) {
+  const _sign = number < 0 ? -1 : 1;
+  const _pow = Math.pow(10, precision);
   return (Math.round(number * _sign * _pow) / _pow) * _sign;
 }
 
 let scrolling = false;
 
-function myAnimate(obj, target, speed, callback) {
+function myAnimate(obj:any, target:any, speed:number, callback?:any) {
   if (!scrolling) {
     scrolling = true;
     let clY = Number(
@@ -172,19 +172,20 @@ function myAnimate(obj, target, speed, callback) {
 
 $(".figureCut").on("mousewheel", function (e) {
   if (!timeDragging) {
-    let l = e.originalEvent.deltaY;
-    let topNum = "";
+    // @ts-ignore
+      let l = e.originalEvent.deltaY;
+    let topNum = 0;
     myEle = null;
     myEle = "#" + $(this).find(".figureChrRow").eq(0).attr("id");
-    let hOrM = myEle.charAt(myEle.length - 1);
-    let elY = Number(
+    const hOrM = myEle.charAt(myEle.length - 1);
+    const elY = Number(
       $(myEle)
         .css("transform")
         .replace(/[^0-9\-,]/g, "")
         .split(",")[5]
     );
     // console.log(l);
-    let n = Math.round(l / 100);
+    const n = Math.round(l / 100);
     l = n * fgChrH;
     let mt = $(myEle).css("margin-top");
     mt = mt.substring(0, mt.length - 2);
@@ -195,7 +196,7 @@ $(".figureCut").on("mousewheel", function (e) {
         if (n > 0) {
           for (let i = 0; i < n; i++) {
             $(myEle).children(":first").remove();
-            topNum = $(myEle).children(":last").text();
+            topNum = parseInt($(myEle).children(":last").text());
             topNum++;
             if (hOrM === "h") {
               if (topNum > 23) {
@@ -206,13 +207,13 @@ $(".figureCut").on("mousewheel", function (e) {
                 topNum = 0;
               }
             }
-            topNum = addZero(topNum);
-            $(myEle).append('<div class="figureChr">' + topNum + "</div>");
+            // topNum = addZero(topNum);
+            $(myEle).append('<div class="figureChr">' + addZero(topNum) + "</div>");
           }
         } else {
           for (let i = 0; i < -n; i++) {
             $(myEle).children(":last").remove();
-            topNum = $(myEle).children(":first").text();
+            topNum =  parseInt($(myEle).children(":first").text());
             topNum--;
             if (hOrM === "h") {
               if (topNum < 0) {
@@ -223,8 +224,8 @@ $(".figureCut").on("mousewheel", function (e) {
                 topNum = 59;
               }
             }
-            topNum = addZero(topNum);
-            $(myEle).prepend('<div class="figureChr">' + topNum + "</div>");
+            // topNum = addZero(topNum);
+            $(myEle).prepend('<div class="figureChr">' + addZero(topNum) + "</div>");
           }
         }
         $(myEle).css("margin-top", Number(mt) + l + "px");

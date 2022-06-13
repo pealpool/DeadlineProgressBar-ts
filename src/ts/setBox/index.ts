@@ -1,16 +1,15 @@
-"use strict";
 // const electron = require('electron');
 // const {app, Menu, Tray} = electron;
 // const {BrowserWindow} = electron;
 // const path = require('path');
 // window.$ = window.jQuery = require('jquery');
 // const { BrowserWindow, screen } = require("@electron/remote");
-const { ipcRenderer } = require("electron");
+import { ipcRenderer } from "electron";
 import "./dragWindow.ts"; //拖动窗体
-import "./startButton.js"; //开始按钮
+import "./startButton.ts"; //开始按钮
 import "./hideButton.ts"; //隐藏按钮
 import "./digitChange.ts"; //数字变化
-import "./timeListButton"; //预设按钮
+import "./timeListButton.ts"; //预设按钮
 
 $("#tab_l").click(function () {
   $(this).addClass("act");
