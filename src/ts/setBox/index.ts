@@ -5,13 +5,16 @@
 // window.$ = window.jQuery = require('jquery');
 // const { BrowserWindow, screen } = require("@electron/remote");
 import { ipcRenderer } from "electron";
-import $ = require("jquery");
+// import $ = require("jquery");
 // window.$ = window.jQuery = require('jquery');
-import "./dragWindow"; //拖动窗体
-import "./startButton"; //开始按钮
-import "./hideButton"; //隐藏按钮
-import "./digitChange"; //数字变化
-import "./timeListButton"; //预设按钮
+// import "./dragWindow"; //拖动窗体
+// import "./startButton"; //开始按钮
+// import "./hideButton"; //隐藏按钮
+// import "./digitChange"; //数字变化
+// import "./timeListButton"; //预设按钮
+
+
+
 
 $("#tab_l").on("click",function () {
   $(this).addClass("act");
